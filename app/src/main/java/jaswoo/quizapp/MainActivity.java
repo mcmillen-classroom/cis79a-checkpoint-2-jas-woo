@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mTrueButton;
     private Button mFalseButton;
     private TextView mFeedback;
+    private Button mNextButton;
+    private Button mPreviousButton;
 
 
     private Question[] mQuestions;
@@ -30,10 +32,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTrueButton = (Button) findViewById(R.id.true_button);
         mFalseButton = (Button) findViewById(R.id.false_button);
         mFeedback = (TextView) findViewById(R.id.feedback_textview);
+        mNextButton = (Button) findViewById(R.id.next_button);
+        mPreviousButton = (Button) findViewById(R.id.previous_button);
 
         mTrueButton.setOnClickListener(this);
         mFalseButton.setOnClickListener(this);
         mFeedback.setOnClickListener(this);
+        mNextButton.setOnClickListener(this);
+        mPreviousButton.setOnClickListener(this);
 
         mTextView = (TextView) findViewById(R.id.text_view);
 
@@ -48,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mQuestions[4] = new Question(R.string.question_5, false);
 
 
-        mTextView.setText(mQuestions.getTextResId());
+        mTextView.setText(mQuestions[mIndex].getTextResId());
 
 
     }
@@ -56,15 +62,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
-        if (view.getId() == R.id.true_button && mQuestions.getAnswer() == true) {
+        if (view.getId() == R.id.true_button && mQuestions[mIndex].getAnswer() == true) {
             Toast myToast = Toast.makeText(this, "YOU ARE CORRECT!", Toast.LENGTH_SHORT);
             myToast.setGravity(Gravity.TOP, 0, 0);
             myToast.show();
         }
-        else if (view.getId() == R.id.false_button && mQuestions.getAnswer() == false) {
+        else if (view.getId() == R.id.false_button && mQuestions[mIndex].getAnswer() == false) {
             Toast myToast = Toast.makeText(this, "YOU ARE CORRECT!", Toast.LENGTH_SHORT);
             myToast.setGravity(Gravity.TOP, 0, 0);
             myToast.show();
+        }
+        else if (view.getId() == R.id.next_button) {
+
+            //CHANGE TO NEXT QUESTION
+        }
+        else if (view.getId() == R.id.previous_button) {
+            //CHANGE TO PREVIOUS QUESTION
+
         }
         else {
             Toast myToast = Toast.makeText(this, "You are incorrect😟", Toast.LENGTH_SHORT);
